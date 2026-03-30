@@ -1,60 +1,66 @@
-# Ex2 Count how many times a number appears in an array recursively.
-## DATE: 24/01/26
+# Ex4 You are given a Java program that performs matrix addition. If Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension, what will be the nature (even/odd/mixed) of the resulting matrix?
+## DATE: 31/01/26
 ## AIM:
-To write a Java program to Count how many times a number appears in an array recursively.
+To write a java function to evaluate weather the given Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension and find the nature of resultant matrrix.
 
 ## Algorithm
+
 1. Start the program.
-2. Read the size of the array and input all elements into the array. 
-3. Read the target number whose frequency you want to count.
-4. Call the recursive function countOccurrences(arr, index, target) If index == arr.length, return 0 If arr[index] == target, return 1 + countOccurrences(arr, index + 1, target) Else return countOccurrences(arr, index + 1, target) 
-5. Display the returned count as the total number of occurrences.  
+2. Read the number of rows rows and columns cols.
+3. Create three 2D arrays.
+4. Input elements for Matrix A.
+5. Input elements for Matrix B.
+6. Perform matrix addition
+7. After each row is printed, move to the next line.
+8. End the program.
 
 ## Program:
 ```
 
 import java.util.Scanner;
 
-public class CountOccurrences {
-    public static int countOccurrences(int[] arr, int n, int target) {
-        if (n == 0) {
-            return 0;
-        }
-        if (arr[n - 1] == target) {
-            return 1 + countOccurrences(arr, n - 1, target);
-        } else {
-            return countOccurrences(arr, n - 1, target);
-        }
-    }
-
+public class MatrixAddition {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int size = scanner.nextInt();
+        Scanner sc = new Scanner(System.in);
+        int rows, cols;
 
-        if (size <= 0) {
-            System.out.println("Invalid array size. Must be positive.");
-            return;
+       
+        rows = sc.nextInt();
+        cols = sc.nextInt();
+
+        int[][] A = new int[rows][cols];
+        int[][] B = new int[rows][cols];
+        int[][] sum = new int[rows][cols];
+
+        
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++)
+                A[i][j] = sc.nextInt();
+
+        
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++)
+                B[i][j] = sc.nextInt();
+
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++)
+                sum[i][j] = A[i][j] + B[i][j];
+
+        
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++)
+                System.out.print(sum[i][j] + " ");
+            System.out.println();
         }
-
-        int[] arr = new int[size];
-        for (int i = 0; i < size; i++) {
-            arr[i] = scanner.nextInt();
-        }
-
-        // Input: Target number to count
-        int target = scanner.nextInt();
-
-        int count = countOccurrences(arr, size, target);
-        System.out.println("The number " + target + " appears " + count + " time(s) in the array.");
-
-        scanner.close();
+        sc.close();
     }
 }
 ```
 
 ## Output:
-<img width="1043" height="628" alt="image" src="https://github.com/user-attachments/assets/72a90608-15d2-4616-9254-4269e5017b63" />
+
+<img width="575" height="744" alt="image" src="https://github.com/user-attachments/assets/b31df123-eb14-4170-9367-96c2f4418264" />
 
 
 ## Result:
-Thus, the Java program to Count how many times a number appears in an array recursively is implemented successfully.
+Thus, the java program to evaluate weather the given Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension and find the nature of resultant matrrix is implemented successfully.
